@@ -14,21 +14,42 @@ const animationVariants = {
   },
 };
 
-function Image({ link, title }) {
+function Image({
+  link,
+  title,
+  description,
+  imageIndex,
+  setBigImageIndex,
+  setShowBigImage,
+}) {
   let fileType = link.slice(-3); // jpg, png, mp4
 
+  function activateBigImage() {
+    setBigImageIndex(imageIndex);
+    setShowBigImage(true);
+  }
+
   return (
-    <article className="image-thumbnail-wrapper">
-      {fileType === "mp4" ? (
-        <motion.video controls variants={animationVariants}>
-          <source src={link} />
-          Unfortunately, your browser does not support video tags
-        </motion.video>
-      ) : (
-        <motion.img src={link} alt={title} variants={animationVariants} />
-      )}
-      <p>{title}</p>
-    </article>
+    <>
+      <article className="image-thumbnail-wrapper">
+        {fileType === "mp4" ? (
+          <motion.video variants={animationVariants} onClick={activateBigImage}>
+            <source src={link} />
+            Unfortunately, your browser does not support video tags
+          </motion.video>
+        ) : (
+          <motion.img
+            src={link}
+            alt={title}
+            initial="hidden"
+            animate="show"
+            variants={animationVariants}
+            onClick={activateBigImage}
+          />
+        )}
+        <p>{description || title}</p>
+      </article>
+    </>
   );
 }
 

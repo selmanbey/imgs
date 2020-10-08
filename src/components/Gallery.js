@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import "./Gallery.css";
 import Image from "./Image";
+import BigImage from "./BigImage";
 import { motion } from "framer-motion";
 import { connect } from "react-redux";
 
@@ -14,7 +16,16 @@ const animationVariants = {
 };
 
 function Gallery({ images }) {
-  return (
+  const [showBigImage, setShowBigImage] = useState(false);
+  const [bigImageIndex, setBigImageIndex] = useState(null);
+
+  return showBigImage && bigImageIndex !== null ? (
+    <BigImage
+      index={bigImageIndex}
+      setShowBigImage={setShowBigImage}
+      setBigImageIndex={setBigImageIndex}
+    />
+  ) : (
     <div>
       {images && (
         <motion.div
@@ -24,7 +35,15 @@ function Gallery({ images }) {
           variants={animationVariants}
         >
           {images.map((img, i) => (
-            <Image key={i} link={img.images[0].link} title={img.title.trim()} />
+            <Image
+              key={i}
+              imageIndex={i}
+              link={img.images[0].link}
+              title={img.title && img.title.trim()}
+              description={img.description && img.description.trim()}
+              setShowBigImage={setShowBigImage}
+              setBigImageIndex={setBigImageIndex}
+            />
           ))}
         </motion.div>
       )}
