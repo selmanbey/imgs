@@ -3,7 +3,6 @@ import "./App.css";
 import GalleryPrefs from "./components/GalleryPrefs";
 import Gallery from "./components/Gallery";
 import Navigation from "./components/Navigation";
-import LoadingIcon from "./components/LoadingIcon";
 import { connect } from "react-redux";
 import { setImages } from "./redux/actions";
 import { fetchImagesFromImgur } from "./modules/fetch";
@@ -11,27 +10,24 @@ import { fetchImagesFromImgur } from "./modules/fetch";
 function App(props) {
   const { images, section, sort, page, window, showViral } = props;
   const { setImages } = props;
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-  }, [section, sort, window, page, showViral]);
-
-  useEffect(() => {
     if (!section) return;
+    setLoading(true);
 
-    if (loading) setLoading(false);
     fetchImagesFromImgur({ section, sort, window, page, showViral })
       .then((images) => {
+        setLoading(false);
         setImages(images);
-        setLoading(false);
       })
-      .catch((error) => {
-        console.error("Image retrieval failed!", error); // TODO
-        setLoading(false);
-      });
-  }, [loading, setImages]);
+      .catch(
+        (error) => {
+          setLoading(false);
+          console.error("Image retrieval failed!", error);
+        } // TODO
+      );
+  }, [section, sort, window, page, showViral, setImages]);
 
   // TODO: REMOVE
   useEffect(() => {
@@ -41,7 +37,7 @@ function App(props) {
   return (
     <main className="app">
       <GalleryPrefs />
-      {loading ? <LoadingIcon /> : <Gallery />}
+      <Gallery loading={loading} />
       <Navigation />
     </main>
   );

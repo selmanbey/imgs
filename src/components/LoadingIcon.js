@@ -4,12 +4,15 @@ import "./LoadingIcon.css";
 function LoadingIcon() {
   // https://loading.io/css/
   return (
-    <div className="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <article className="loading-icon">
+      <div className="lds-bg"></div>
+      <div className="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </article>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Gallery.css";
+import LoadingIcon from "./LoadingIcon";
 import Image from "./Image";
 import BigImage from "./BigImage";
 import { motion } from "framer-motion";
@@ -15,18 +16,22 @@ const animationVariants = {
   },
 };
 
-function Gallery({ images }) {
+function Gallery({ loading, images }) {
   const [showBigImage, setShowBigImage] = useState(false);
   const [bigImageIndex, setBigImageIndex] = useState(null);
 
   return showBigImage && bigImageIndex !== null ? (
-    <BigImage
-      index={bigImageIndex}
-      setShowBigImage={setShowBigImage}
-      setBigImageIndex={setBigImageIndex}
-    />
+    <div className="gallery">
+      {loading && <LoadingIcon />}
+
+      <BigImage
+        index={bigImageIndex}
+        setShowBigImage={setShowBigImage}
+        setBigImageIndex={setBigImageIndex}
+      />
+    </div>
   ) : (
-    <div>
+    <>
       {images && (
         <motion.div
           className="gallery"
@@ -34,6 +39,8 @@ function Gallery({ images }) {
           animate="show"
           variants={animationVariants}
         >
+          {loading && <LoadingIcon />}
+
           {images.map((img, i) => (
             <Image
               key={i}
@@ -47,7 +54,7 @@ function Gallery({ images }) {
           ))}
         </motion.div>
       )}
-    </div>
+    </>
   );
 }
 
