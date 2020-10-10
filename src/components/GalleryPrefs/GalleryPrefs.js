@@ -39,7 +39,7 @@ function GalleryPrefs({
   }
 
   return (
-    <section className="gallery-prefs">
+    <section role="region" className="gallery-prefs">
       <div className="gallery-pref-page-display">
         {/* Display the number of pages as dots */}
         <p>{`page ${page + 1}`}</p>
@@ -56,6 +56,7 @@ function GalleryPrefs({
             key={i}
             onClick={() => setSectionAdjustingSort(s, sort)}
             className={section === s ? "active-section" : null}
+            data-testid={section === s ? "active-section" : null}
           >
             {s}
           </button>
@@ -108,6 +109,7 @@ function GalleryPrefs({
         <label>
           <input
             id="viral-switch"
+            name="viral"
             type="checkbox"
             checked={showViral}
             onChange={() => setShowViral(!showViral)}

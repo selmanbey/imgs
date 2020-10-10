@@ -9,15 +9,7 @@ import { setImages } from "./redux/actions";
 import { fetchImagesFromImgur } from "./modules/fetch";
 
 function App(props) {
-  const {
-    images,
-    section,
-    sort,
-    page,
-    window,
-    showViral,
-    bigImageOpen,
-  } = props;
+  const { section, sort, page, window, showViral, bigImageOpen } = props;
   const { setImages } = props;
   const [loading, setLoading] = useState(true);
 
@@ -38,11 +30,6 @@ function App(props) {
       );
   }, [section, sort, window, page, showViral, setImages]);
 
-  // TODO: REMOVE
-  useEffect(() => {
-    images && console.log(images);
-  }, [images]);
-
   return (
     <main className="app">
       {!bigImageOpen && <GalleryPrefs />}
@@ -54,9 +41,9 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-  const { images, section, sort, page, window, showViral } = state.galleryPrefs;
+  const { section, sort, page, window, showViral } = state.galleryPrefs;
   const { bigImageOpen } = state.bigImage;
-  return { images, section, sort, page, window, showViral, bigImageOpen };
+  return { section, sort, page, window, showViral, bigImageOpen };
 };
 const mapDispatchToProps = { setImages };
 

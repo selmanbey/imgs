@@ -11,7 +11,10 @@ function Gallery({ images, bigImageOpen, bigImageIndex, loading }) {
   }, [images]);
 
   return (
-    <section className={loading ? "gallery gallery-loading" : "gallery"}>
+    <section
+      role="region"
+      className={loading ? "gallery gallery-loading" : "gallery"}
+    >
       {bigImageOpen && bigImageIndex !== null ? (
         <BigImage index={bigImageIndex} />
       ) : (
