@@ -40,6 +40,16 @@ function GalleryPrefs({
 
   return (
     <section className="gallery-prefs">
+      <div className="gallery-pref-page-display">
+        {/* Display the number of pages as dots */}
+        <p>{`page ${page + 1}`}</p>
+        {Array(page + 1)
+          .fill()
+          .map((_, i) => (
+            <div key={i} className="page-indicator"></div>
+          ))}
+      </div>
+
       <div className="gallery-pref-sections">
         {Object.values(SECTIONS).map((s, i) => (
           <button
@@ -54,16 +64,6 @@ function GalleryPrefs({
           id={"selected-" + section}
           className="active-section-indicator"
         ></div>
-      </div>
-
-      <div className="gallery-pref-page-display">
-        {/* Display the number of pages as dots */}
-        <p>{`page ${page + 1}`}</p>
-        {Array(page + 1)
-          .fill()
-          .map((_, i) => (
-            <div key={i} className="page-indicator"></div>
-          ))}
       </div>
 
       <div className="gallery-pref-options">

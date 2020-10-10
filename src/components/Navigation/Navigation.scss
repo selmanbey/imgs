@@ -48,4 +48,40 @@
       box-shadow: -4px -4px 4px -2px $base;
     }
   }
+
+  @media screen and (max-width: 720px) {
+    button {
+      width: 20px;
+      height: 20px;
+      top: auto;
+      bottom: 5%;
+
+      &:hover,
+      &:focus {
+        border-color: $accent !important;
+      }
+    }
+
+    #nav-back-button {
+      left: calc(5%);
+      border-bottom: 2px solid $primary;
+      border-right: 2px solid $primary;
+
+      &:hover,
+      &:focus {
+        box-shadow: 4px 4px 4px -2px $accent;
+      }
+    }
+
+    #nav-next-button {
+      right: calc(5%);
+      border-top: 2px solid $primary;
+      border-left: 2px solid $primary;
+
+      &:hover,
+      &:focus {
+        box-shadow: -4px -4px 4px -2px $accent;
+      }
+    }
+  }
 }

@@ -10,6 +10,62 @@
   border-left: 1px solid $base;
   border-right: 1px solid $base;
 
+  .gallery-pref-page-display {
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 80px;
+    min-height: 40px;
+    max-height: 80%;
+    overflow: hidden;
+    padding: 0.5rem;
+    border: 1px solid $accent;
+    border-radius: 40px;
+
+    &:hover {
+      background: $accent;
+      border: 1px solid $base;
+    }
+
+    &:hover p {
+      opacity: 1;
+    }
+
+    &:hover div {
+      opacity: 0;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.8rem;
+      color: $primary;
+      opacity: 0;
+      transition: all 0.8s;
+      width: 100%;
+      text-align: center;
+    }
+
+    div {
+      width: 4px;
+      height: 4px;
+      margin: 1px;
+      border-radius: 50%;
+      background-color: $base;
+      transition: all 0.4s;
+    }
+  }
+
   .gallery-pref-sections {
     position: relative;
     min-width: 13rem;
@@ -55,60 +111,6 @@
 
     #selected-user {
       left: 9rem;
-    }
-  }
-
-  .gallery-pref-page-display {
-    box-sizing: border-box;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
-    width: 80px;
-    min-height: 40px;
-    padding: 0.5rem;
-    border: 1px solid $accent;
-    border-radius: 40px;
-
-    &:hover {
-      background: $accent;
-      border: 1px solid $base;
-    }
-
-    &:hover p {
-      opacity: 1;
-    }
-
-    &:hover div {
-      opacity: 0;
-    }
-
-    p {
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 0.8rem;
-      color: $primary;
-      opacity: 0;
-      transition: all 0.8s;
-      width: 100%;
-      text-align: center;
-    }
-
-    div {
-      width: 4px;
-      height: 4px;
-      margin: 1px;
-      border-radius: 50%;
-      background-color: $base;
-      transition: all 0.4s;
     }
   }
 
@@ -209,6 +211,124 @@
         display: block;
         font-size: 0.9rem;
         margin-bottom: 0.3rem;
+      }
+    }
+  }
+
+  // MOBILE
+  @media screen and (max-width: 720px) {
+    padding: 1rem 0;
+    background: $primary;
+    border: none;
+
+    .gallery-pref-page-display {
+      top: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+
+      width: 100vw;
+      min-height: 0;
+      height: 13px;
+      padding: 0 0.5rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: none;
+
+      &:hover,
+      &:focus {
+        background: inherit;
+        border: none;
+      }
+
+      &:hover p {
+        color: $accent;
+      }
+
+      p {
+        top: 45%;
+        font-size: 0.7rem;
+      }
+    }
+
+    .gallery-pref-sections {
+      position: relative;
+      padding-left: 0;
+
+      button {
+        width: 3.2rem;
+        font-size: 1rem;
+
+        &:hover,
+        &:focus {
+          font-size: 1.2rem;
+        }
+      }
+
+      .active-section {
+        font-size: 1.2rem;
+      }
+
+      .active-section-indicator {
+        bottom: -0.2rem;
+        width: 3.2rem;
+        height: 0.15rem;
+      }
+
+      #selected-hot {
+        left: 0;
+      }
+
+      #selected-top {
+        left: 3.2rem;
+      }
+
+      #selected-user {
+        left: 6.4rem;
+      }
+    }
+
+    .gallery-pref-options {
+      text-align: center;
+      color: $base;
+      font-size: 0.8rem;
+      min-width: 0;
+      display: block;
+      margin-right: 0.5rem;
+
+      label {
+        position: relative;
+        margin-right: 0rem;
+        margin: 0.8rem 0;
+        min-width: calc(100% / 3);
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+
+        .checkbox-slider {
+          top: 60%;
+        }
+
+        select {
+          display: block;
+          border: 1px solid $primary;
+          border-radius: 1rem;
+          color: $primary;
+          width: 66px;
+          padding: 0 0.5rem;
+
+          &:focus {
+            outline: $accent;
+          }
+        }
+
+        .select-name {
+          display: block;
+          font-size: 0.8rem;
+          margin-bottom: 0rem;
+          margin-right: 0.5rem;
+        }
       }
     }
   }
