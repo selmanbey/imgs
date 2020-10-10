@@ -1,29 +1,23 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "./Gallery.css";
 import Image from "../Image/Image";
 import BigImage from "../BigImage/BigImage";
-import { motion } from "framer-motion";
 import { connect } from "react-redux";
 import { showBigImage, setBigImageIndex } from "../../redux/actions";
 
 function Gallery({ images, bigImageOpen, bigImageIndex, loading }) {
+  const allImages = useMemo(() => {
+    return images && images.map((_, i) => <Image key={i} imageIndex={i} />);
+  }, [images]);
+
   return (
-    <motion.section
-      className={loading ? "gallery gallery-loading" : "gallery"}
-      animate={{
-        transition: {
-          staggerChildren: 1,
-        },
-      }}
-    >
+    <section className={loading ? "gallery gallery-loading" : "gallery"}>
       {bigImageOpen && bigImageIndex !== null ? (
         <BigImage index={bigImageIndex} />
       ) : (
-        <>
-          {images && images.map((img, i) => <Image key={i} imageIndex={i} />)}
-        </>
+        <>{allImages}</>
       )}
-    </motion.section>
+    </section>
   );
 }
 

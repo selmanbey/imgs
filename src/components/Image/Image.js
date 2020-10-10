@@ -4,15 +4,6 @@ import { connect } from "react-redux";
 import { showBigImage, setBigImageIndex } from "../../redux/actions";
 import "./Image.css";
 
-const animationVariants = {
-  hidden: {
-    scale: 0,
-  },
-  show: {
-    scale: 1,
-  },
-};
-
 function Image({ images, imageIndex, setBigImageIndex, showBigImage }) {
   let image = images[imageIndex];
   let { title, description } = image;
@@ -35,28 +26,25 @@ function Image({ images, imageIndex, setBigImageIndex, showBigImage }) {
   return (
     <>
       <article className="image-thumbnail">
-        <div className="image-wrapper">
+        <motion.div
+          className="image-wrapper"
+          initial={{ scale: 0.2, opacity: 0 }}
+          animate={{
+            scale: 1,
+            opacity: 1,
+
+            transition: { delay: imageIndex * 0.1 },
+          }}
+          exit={{ scale: 0.2, opacity: 0 }}
+        >
           <p>{description || title}</p>
 
           {fileType === "mp4" ? (
-            <motion.video
-              variants={animationVariants}
-              onClick={activateBigImage}
-            >
-              <source src={link} />
-              Unfortunately, your browser does not support video tags
-            </motion.video>
+            <video src={link} onClick={activateBigImage} />
           ) : (
-            <motion.img
-              src={link}
-              alt={title}
-              initial="hidden"
-              animate="show"
-              variants={animationVariants}
-              onClick={activateBigImage}
-            />
+            <img src={link} alt={title} onClick={activateBigImage} />
           )}
-        </div>
+        </motion.div>
       </article>
     </>
   );
