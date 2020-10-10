@@ -5,6 +5,8 @@ import {
   SET_SHOW_VIRAL,
   SET_SORT_TYPE,
   SET_WINDOW,
+  SHOW_BIG_IMAGE,
+  SET_BIG_IMAGE_INDEX,
 } from "./actionTypes";
 
 export const setImages = (images) => ({
@@ -35,4 +37,14 @@ export const setWindow = (window) => ({
 export const setShowViral = (showViral) => ({
   type: SET_SHOW_VIRAL,
   payload: showViral,
+});
+
+export const showBigImage = (bigImageOpen) => ({
+  type: SHOW_BIG_IMAGE,
+  payload: bigImageOpen,
+});
+
+export const setBigImageIndex = (bigImageIndex) => ({
+  type: SET_BIG_IMAGE_INDEX,
+  payload: bigImageIndex,
 });

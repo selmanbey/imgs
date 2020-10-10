@@ -1,0 +1,215 @@
+@import "_colors";
+
+.gallery-prefs {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  background: $primary;
+  border-left: 1px solid $base;
+  border-right: 1px solid $base;
+
+  .gallery-pref-sections {
+    position: relative;
+    min-width: 13rem;
+    padding-left: 1rem;
+
+    button {
+      cursor: pointer;
+      width: 4rem;
+      font-size: 1.2rem;
+      color: $base;
+      transition: all 0.2s ease-in-out;
+
+      &:hover,
+      &:focus {
+        outline: none;
+        color: $accent;
+        font-size: 1.4rem;
+      }
+    }
+
+    .active-section {
+      font-size: 1.4rem;
+      color: $accent;
+    }
+
+    .active-section-indicator {
+      position: absolute;
+      left: 0;
+      bottom: -0.5rem;
+      width: 4rem;
+      height: 0.2rem;
+      background: $accent;
+      transition: left 0.4s;
+    }
+
+    #selected-hot {
+      left: 1rem;
+    }
+
+    #selected-top {
+      left: 5rem;
+    }
+
+    #selected-user {
+      left: 9rem;
+    }
+  }
+
+  .gallery-pref-page-display {
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 80px;
+    min-height: 40px;
+    padding: 0.5rem;
+    border: 1px solid $accent;
+    border-radius: 40px;
+
+    &:hover {
+      background: $accent;
+      border: 1px solid $base;
+    }
+
+    &:hover p {
+      opacity: 1;
+    }
+
+    &:hover div {
+      opacity: 0;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.8rem;
+      color: $primary;
+      opacity: 0;
+      transition: all 0.8s;
+      width: 100%;
+      text-align: center;
+    }
+
+    div {
+      width: 4px;
+      height: 4px;
+      margin: 1px;
+      border-radius: 50%;
+      background-color: $base;
+      transition: all 0.4s;
+    }
+  }
+
+  .gallery-pref-options {
+    text-align: center;
+    color: $base;
+    font-size: 1.2rem;
+    min-width: 16rem;
+    display: flex;
+    justify-content: flex-end;
+
+    label {
+      position: relative;
+      margin-right: 1.5rem;
+      min-width: calc(100% / 3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      input[type="checkbox"] {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked + .checkbox-slider {
+          background-color: $accent;
+        }
+
+        &:checked ~ .checkbox-name {
+          color: $accent;
+        }
+
+        &:checked + .checkbox-slider:before {
+          color: $base;
+          background: $primary;
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(26px);
+        }
+
+        &:focus + .checkbox-slider {
+          box-shadow: 0 0 1px $accent;
+        }
+      }
+
+      .checkbox-name {
+        opacity: 0; // left here for a11y purposes
+      }
+
+      .checkbox-slider {
+        position: absolute;
+        display: block;
+        cursor: pointer;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        // right: 0;
+        // bottom: 0;
+        width: 66px;
+        height: 20px;
+        background-color: $base;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        border-radius: 34px;
+
+        &::before {
+          position: absolute;
+          content: "viral";
+          display: flex;
+          justify-content: center;
+          font-size: 0.8rem;
+          height: 16px;
+          width: 36px;
+          left: 2px;
+          bottom: 2px;
+          background-color: $primary;
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+          border-radius: 34px;
+        }
+      }
+
+      select {
+        display: block;
+        border: 1px solid $primary;
+        border-radius: 1rem;
+        color: $primary;
+        width: 5rem;
+        padding: 0 0.5rem;
+
+        &:focus {
+          outline: $accent;
+        }
+      }
+
+      .select-name {
+        display: block;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+      }
+    }
+  }
+}

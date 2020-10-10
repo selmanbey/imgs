@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import GalleryPrefs from "./components/GalleryPrefs";
-import Gallery from "./components/Gallery";
-import Navigation from "./components/Navigation";
+import GalleryPrefs from "./components/GalleryPrefs/GalleryPrefs";
+import Gallery from "./components/Gallery/Gallery";
+import Navigation from "./components/Navigation/Navigation";
+import LoadingIcon from "./components/LoadingIcon/LoadingIcon";
 import { connect } from "react-redux";
 import { setImages } from "./redux/actions";
 import { fetchImagesFromImgur } from "./modules/fetch";
 
 function App(props) {
-  const { images, section, sort, page, window, showViral } = props;
+  const {
+    images,
+    section,
+    sort,
+    page,
+    window,
+    showViral,
+    bigImageOpen,
+  } = props;
   const { setImages } = props;
   const [loading, setLoading] = useState(true);
 
@@ -36,7 +45,8 @@ function App(props) {
 
   return (
     <main className="app">
-      <GalleryPrefs />
+      {!bigImageOpen && <GalleryPrefs />}
+      {loading && <LoadingIcon />}
       <Gallery loading={loading} />
       <Navigation />
     </main>
@@ -45,7 +55,8 @@ function App(props) {
 
 const mapStateToProps = (state) => {
   const { images, section, sort, page, window, showViral } = state.galleryPrefs;
-  return { images, section, sort, page, window, showViral };
+  const { bigImageOpen } = state.bigImage;
+  return { images, section, sort, page, window, showViral, bigImageOpen };
 };
 const mapDispatchToProps = { setImages };
 

@@ -1,0 +1,15 @@
+.gallery {
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 auto;
+  padding: 1rem 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.gallery-loading {
+  opacity: 0.3;
+}

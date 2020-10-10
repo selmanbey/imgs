@@ -1,0 +1,51 @@
+@import "_colors";
+
+.navigation {
+  button {
+    cursor: pointer;
+    position: fixed;
+    top: 50%;
+    border: none;
+    width: 30px;
+    height: 30px;
+    transform: rotate(135deg);
+    transition: box-shadow 0.2s;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      border-color: $accent !important;
+    }
+  }
+
+  #nav-back-button {
+    left: calc(5% - 30px);
+    border-bottom: 2px solid $base;
+    border-right: 2px solid $base;
+
+    &:hover,
+    &:focus {
+      box-shadow: 4px 4px 4px -2px $base;
+    }
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.2;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  #nav-next-button {
+    right: calc(5% - 30px);
+    border-top: 2px solid $base;
+    border-left: 2px solid $base;
+
+    &:hover,
+    &:focus {
+      box-shadow: -4px -4px 4px -2px $base;
+    }
+  }
+}

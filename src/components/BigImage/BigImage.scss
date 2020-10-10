@@ -1,0 +1,85 @@
+@import "_colors";
+
+.big-image-wrapper {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  width: 100%;
+  min-height: 100%;
+  max-width: 800px;
+
+  button {
+    cursor: pointer;
+    margin: 0;
+    margin-bottom: 1rem;
+    // width: 100%;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: $primary;
+    z-index: 3;
+    transition: color 0.4s;
+
+    &:before {
+      content: "<<";
+      margin-right: 1rem;
+      color: $accent;
+      transition: color 0.4s;
+    }
+
+    &:after {
+      content: "<<";
+      margin-left: 1rem;
+      color: $accent;
+      transition: color 0.4s;
+    }
+
+    &:hover {
+      color: $accent;
+    }
+
+    &:hover:before,
+    &:hover:after {
+      color: $primary;
+    }
+  }
+
+  video,
+  img {
+    box-sizing: border-box;
+    border: 2px solid $primary;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  ul {
+    // width: 100%;
+    padding: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    li {
+      position: relative;
+      margin: 0.1rem 0;
+      font-weight: 700;
+
+      &:before {
+        content: "●";
+        color: $accent;
+        margin-right: 1rem;
+      }
+
+      span {
+        font-weight: 400;
+      }
+    }
+  }
+}

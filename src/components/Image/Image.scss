@@ -1,0 +1,61 @@
+@import "_colors";
+
+.image-thumbnail {
+  box-sizing: border-box;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover p {
+    opacity: 0;
+  }
+
+  &:hover .image-wrapper {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 1rem;
+    border: 3px solid $accent;
+  }
+
+  .image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border: 2px solid $primary;
+    border-radius: 50%;
+    transition: width 400ms, height 400ms, border-radius 400ms;
+    overflow: hidden;
+  }
+
+  video,
+  img {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    background: none;
+  }
+
+  p {
+    box-sizing: border-box;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0;
+    color: $primary;
+    text-align: center;
+    position: absolute;
+    bottom: 1.2rem;
+    left: 0;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    padding-top: 0.5rem;
+    font-size: 0.7rem;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 400ms;
+  }
+}
