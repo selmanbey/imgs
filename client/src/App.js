@@ -22,12 +22,11 @@ function App(props) {
         setLoading(false);
         setImages(images);
       })
-      .catch(
-        (error) => {
-          setLoading(false);
-          console.error("Image retrieval failed!", error);
-        } // TODO
-      );
+      .catch((error) => {
+        setLoading(false);
+        console.error("Image retrieval failed!", error);
+        alert("Image retrieval failed!");
+      });
   }, [section, sort, window, page, showViral, setImages]);
 
   return (

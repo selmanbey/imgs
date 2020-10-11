@@ -1,6 +1,6 @@
 # imgs
 
-This repository is for a web-app called **imgs-lite**. See the app in production here:
+This repository is for a web-app called **imgs-lite**. It fetches the gallery images from imgur.com and displays them in a rather lite and simple layout. See the app in production here:
 
 https://imgs-lite.herokuapp.com/
 
@@ -14,12 +14,14 @@ Both of these apps have their separate dependencies and `package.json`s. You can
 
 ## Setting up your local dev environment
 
-As a _prerequisite_, make sure you have `npm` installed on your local machine and install the project dependendencies with it:
+As **PREREQUISITES**, make sure you have `npm` installed on your local machine and install the project dependendencies with it:
 
 - `npm install` installs server dependencies
 - `npm run install-client` installs client dependencies (just a shortcut for `cd client && npm install`)
 
-When run on the root of the project:
+It is also **ESSENTIAL** that you have an `.env` file with your `IMGUR_CLIENT_ID` in it. In the absence of this environmental variable, the app won't be able to fetch images from imgur.com and thus, won't be able to work properly.
+
+When you satisfy the prerequisites, you may run the following scripts on the root of the project:
 
 - `npm run start-client` starts the React app on port 3000
 - `npm run start-dev` starts the Express app on port 5000 (with `nodemon`)
