@@ -1,75 +1,33 @@
-// TODO
+# imgs
 
-- Updated scripts
-- Needs imgurl clients to run in the development
+This repository is for a web-app called **imgs-lite**. See the app in production here:
 
----
+https://imgs-lite.herokuapp.com/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## App Structure
 
-## Available Scripts
+This is an app with Node/Express + React/Redux stack. In production, Express server serves both React app (the client) and responds to API calls from React app. Production app is deployed on Heroku.
 
-In the project directory, you can run:
+In development, it is recommended to run the two apps seperately: React serving on port 3000 and proxying its API calls to Express which is running on 5000. Instructions on how to set up your local environment is explained in the next section.
 
-### `npm start`
+Both of these apps have their separate dependencies and `package.json`s. You can inspect the `package.json` scripts to get the full picture about running the apps on both your local machine and in production.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setting up your local dev environment
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+As a _prerequisite_, make sure you have `npm` installed on your local machine and install the project dependendencies with it:
 
-### `npm test`
+- `npm install` installs server dependencies
+- `npm run install-client` installs client dependencies (just a shortcut for `cd client && npm install`)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+When run on the root of the project:
 
-### `npm run build`
+- `npm run start-client` starts the React app on port 3000
+- `npm run start-dev` starts the Express app on port 5000 (with `nodemon`)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This is the recommended way to do development as it allows hot-reloading on both apps and see their outputs on respective terminals.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Tests
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+There are a number of test suites for the React app. `npm test` on client's `package.json` runs and watches them:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- `cd client && npm test`
