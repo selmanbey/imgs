@@ -1,54 +1,23 @@
 {
-  "name": "imgs",
+  "name": "imgs-server",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.0.4",
-    "@testing-library/user-event": "^12.1.7",
     "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "framer-motion": "^2.8.0",
-    "jest-environment-jsdom-sixteen": "^1.0.3",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.1",
-    "react-scripts": "3.4.3",
-    "redux": "^4.0.5"
+    "framer-motion": "^2.8.0"
   },
   "scripts": {
-    "start": "npm-run-all -p watch-css start-js",
-    "start-js": "react-scripts start",
-    "build": "npm run build-css && react-scripts build",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
-    "eject": "react-scripts eject",
-    "api-dev": "nodemon api/server.js",
-    "api": "node api/server.js",
-    "build-css": "node-sass --include-path ./src src/ -o src/",
-    "watch-css": "npm run build-css && node-sass --include-path ./src src/ -o src/ --watch --recursive"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "start": "nodemon server.js",
+    "build": "node server.js",
+    "start-client": "cd client && npm start && cd ..",
+    "build-client": "cd client && npm run build && cd ..",
+    "build-and-serve": "npm-run-all build-client build"
   },
   "devDependencies": {
-    "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
-    "npm-run-all": "^4.1.5",
-    "redux-mock-store": "^1.5.4"
+    "npm-run-all": "^4.1.5"
   }
 }

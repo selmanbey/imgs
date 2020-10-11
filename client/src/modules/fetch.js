@@ -5,7 +5,7 @@ export async function fetchImagesFromImgur({
   page,
   showViral,
 }) {
-  let data = await fetch("/get-images-from-imgur", {
+  let data = await fetch("/api/get-images-from-imgur", {
     method: "POST",
     body: JSON.stringify({
       section,
