@@ -11,11 +11,11 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "build": "node server.js",
+    "serve": "node server.js",
     "install-client": "cd client && npm install && cd ..",
     "start-client": "cd client && npm start && cd ..",
     "build-client": "cd client && npm run build && cd ..",
-    "deploy": "npm install && npm-run-all install-client build-client build"
+    "build": "npm install && npm-run-all install-client build-client serve"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",
