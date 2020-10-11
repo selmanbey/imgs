@@ -13,7 +13,10 @@ const getImagesFromImgur = async (req, res) => {
     },
   })
     .then((response) => res.json(response.data.data))
-    .catch((error) => res.status(500).send(error));
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send(error);
+    });
 };
 
 module.exports = getImagesFromImgur;
