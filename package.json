@@ -15,7 +15,7 @@
     "install-client": "cd client && npm install && cd ..",
     "start-client": "cd client && npm start && cd ..",
     "build-client": "cd client && npm run build && cd ..",
-    "deploy": "npm install && npm-run-all install-client build-client"
+    "deploy-init": "npm install && npm-run-all install-client build-client"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",
