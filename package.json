@@ -23,7 +23,6 @@
     "start": "npm-run-all -p watch-css start-js",
     "start-js": "react-scripts start",
     "build": "npm run build-css && react-scripts build",
-    "now-build": "npm run build-css && react-scripts build && mv build dist",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject",
     "api-dev": "nodemon api/server.js",
