@@ -39,7 +39,7 @@ function GalleryPrefs({
   }
 
   return (
-    <section role="region" className="gallery-prefs">
+    <section data-testid="main-section" className="gallery-prefs">
       <div className="gallery-pref-page-display">
         {/* Display the number of pages as dots */}
         <p>{`page ${page + 1}`}</p>
@@ -56,7 +56,6 @@ function GalleryPrefs({
             key={i}
             onClick={() => setSectionAdjustingSort(s, sort)}
             className={section === s ? "active-section" : null}
-            data-testid={section === s ? "active-section" : null}
           >
             {s}
           </button>

@@ -15,6 +15,7 @@ function Navigation({
     <nav className="navigation">
       <button
         id="nav-back-button"
+        data-testid="nav-back-button"
         onClick={() => {
           if (bigImageOpen) setBigImageIndex(bigImageIndex - 1);
           else setPage(page - 1);
@@ -23,6 +24,7 @@ function Navigation({
       />
       <button
         id="nav-next-button"
+        data-testid="nav-next-button"
         onClick={() => {
           if (bigImageOpen && bigImageIndex < images.length - 1) {
             setBigImageIndex(bigImageIndex + 1);

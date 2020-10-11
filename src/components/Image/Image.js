@@ -37,7 +37,7 @@ function Image({ images, imageIndex, setBigImageIndex, showBigImage }) {
           }}
           exit={{ scale: 0.2, opacity: 0 }}
         >
-          <p>{description || title}</p>
+          <p data-testid="image-description">{description || title}</p>
 
           {fileType === "mp4" ? (
             <video src={link} onClick={activateBigImage} />

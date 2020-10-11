@@ -12,7 +12,7 @@ function Gallery({ images, bigImageOpen, bigImageIndex, loading }) {
 
   return (
     <section
-      role="region"
+      data-testid="main-section"
       className={loading ? "gallery gallery-loading" : "gallery"}
     >
       {bigImageOpen && bigImageIndex !== null ? (
