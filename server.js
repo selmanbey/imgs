@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const getImagesFromImgur = require("./api/getImagesFromImgur");
 
 const app = express();
-const port = process.env.HTTPS_PORT || 5000;
+const port = process.env.PORT || 5000;
 
 dotenv.config();
 
